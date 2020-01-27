@@ -6,7 +6,7 @@
     <title>LoginPhP</title>
 </head>
 <body>
-<p><a href="#">Login</a> or <a href="#">Register!</a></p>
+<p><a href="http://localhost/loginPhP/login.php">Login</a> or <a href="http://localhost/loginPhP/register.php">Register!</a></p>
     
 </body>
 </html>
