@@ -1,31 +1,66 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Register</title>
-</head>
-<body>
-<div class="container h-80">
-<div class="row align-items-center h-100">
-    <div class="col-3 mx-auto">
-        <div class="text-center">
-            <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-
-<form action="/action_page.php">
-  <input type="text" name="username" placeholder="username"><br>
-  <input type="password" name="password" placeholder="password"><br>
-  <input type="password" name="password2"placeholder="confirm password"><br>
-  <input type="submit" value="Register" button class="btn btn-lg btn-primary btn-block btn-signin"> 
-</form>
-    
-</body>
-</html>
 <?php
+// core configuration
+//include_once "config/core.php";
 
+// set page title
+$page_title = "Register";
+
+// include login checker
+//include_once "login_checker.php";
+
+// include classes
+include_once 'Classes/connection.php';
+include_once 'Classes/register.php';
+//include_once "libs/php/utils.php";
+
+// include page header HTML
+//include_once "layout_head.php";
+
+if($_POST){
+
+    // get database connection
+    $database = new Connection();
+    $db = $database->openConnection();
+
+    $user->username=$_POST['username'];
+    $user->password=$_POST['password'];
+    $user->email=$_POST['email'];
+
+    // create the user
+if($user->register()){
+
+    echo "<div class='alert alert-info'>";
+        echo "Successfully registered. <a href='http://test01.local/LoginPhP/register.php'>Please login</a>.";
+    echo "</div>";
+    }else{
+    echo "<div class='alert alert-danger' role='alert'>Unable to register. Please try again.</div>";
+}
+}
 ?>
+<form action='register.php' method='post' id='register'>
+
+    <table class='table table-responsive'>
+
+        <tr>
+            <td class='width-30-percent'>Username</td>
+            <td><input type='text' name='username' class='form-control' required value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username'], ENT_QUOTES) : "";  ?>" /></td>
+        </tr>
+
+        <tr>
+            <td>Password</td>
+            <td><input type='password' name='password' class='form-control' required value="<?php echo isset($_POST['password']) ? htmlspecialchars($_POST['password'], ENT_QUOTES) : "";  ?>" /></td>
+        </tr>
+ <tr>
+            <td>Email</td>
+            <td><input type='email' name='email' class='form-control' required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : "";  ?>" /></td>
+        </tr>
+        <td></td>
+            <td>
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span> Register
+                </button>
+            </td>
+        </tr>
+
+    </table>
+</form>

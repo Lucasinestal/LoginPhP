@@ -23,8 +23,5 @@
   }
 }
 
-$database = new Connection;
-
-$db = $database->openConnection();
 
 ?>
