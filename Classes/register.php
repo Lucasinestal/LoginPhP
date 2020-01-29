@@ -4,9 +4,9 @@ include_once 'connection.php';
 
   
 
-//importera connection, 
-//Kolla mot inputs
-//Hämta från DB
+//importera connection, klart
+//Kolla mot inputs klart
+//Posta till DB 
 //Hasha lösenord
 //trycka in nu användare
 
@@ -24,7 +24,9 @@ class Register{
     }
         //Register new user
        public function register(){
-            $query = "INSERT INTO users (username, password, email) VALUES ('$this->username', '$this->password', '$this->email')";
+           //hashing password
+            $hash = password_hash($this->password, PASSWORD_DEFAULT);
+            $query = "INSERT INTO users (username, password, email) VALUES ('$this->username', '$hash', '$this->email')";
 
             $stmt = $this->conn->prepare($query);
 
