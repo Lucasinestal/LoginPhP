@@ -10,11 +10,10 @@
         try
             {
         $this->con = new PDO($this->server, $this->user,$this->pass,$this->options);
-        echo "Connection to database was successful";
-        return $this->con;
+            return $this->con;
             }
         catch (PDOException $e){
-                echo "There is some problem in connection: " . $e->getMessage();
+        
             }
         }
     public function closeConnection() {

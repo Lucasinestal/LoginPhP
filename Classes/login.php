@@ -42,22 +42,16 @@ public function login(){
     echo "<br>";
 
     if(password_verify($this->password ,$decoded->password) === true){
-        //redirect to profile   
-        echo "<br>";
-        echo "correct match of passwords";
-        echo "<br>";
-
-    }
-    else{
-        echo "wrong password";
-    }
-
-    
+            //redirect to profile   
+            echo "<br>";
+            echo "correct match of passwords";
+            echo "<br>";
         }
+            else{
+                    echo "wrong password";
+                }
+    }
 }
 
 $database = new Connection();
 $db = $database->openConnection();
-
-
-
