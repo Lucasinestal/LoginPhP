@@ -1,9 +1,6 @@
 <?php
-//session_start();
 
-//inkludera connection
-include_once "connection.php";
-
+namespace Classes;
 
 class Login
 {
@@ -34,35 +31,21 @@ public function login(){
     else{
     $user = json_encode($match);
 
-    //check if this->password == hashed password
-    $decoded = json_decode($user);
+        //check if this->password == hashed password
+        $decoded = json_decode($user);
 
-    $decoded->password;
-    echo "<br>";
-   // print_r($decoded->password);
-    echo "<br>";
-    //print_r($this->password);
-    echo "<br>";
-
-    if(password_verify($this->password, $decoded->password) === true){
-        
-        $_SESSION["username"] = $decoded->username;
-        //redirect to profile   
-        echo "<br>";
-        echo "correct match of passwords";
-        echo "<br>";
-        header("Location: profile.php");
-
+        if (password_verify($this->password, $decoded->password) === true) {
+            $_SESSION["username"] = $decoded->username;
+            //redirect to profile
+            echo "<br>";
+            echo "correct match of passwords";
+            echo "<br>";
+            header("Location: profile.php");
+            } else {
+                echo "wrong password";
+            }
+        }
     }
-    else{
-        
-        echo "wrong password";
-        
-    }
-
-    
-    } 
-}
 }
 
 $database = new Connection();

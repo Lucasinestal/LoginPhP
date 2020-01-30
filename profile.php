@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -22,7 +22,7 @@ session_start();
         <div class="text-center">
             <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
             <p id="profile-name" class="profile-name-card">
-                <?php 
+                <?php
                     // include_once 'Classes/login.php';
 
                     if (!isset($_SESSION['username'])) {
