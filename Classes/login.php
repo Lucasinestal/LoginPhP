@@ -1,8 +1,8 @@
 <?php
+session_start();
+
 //inkludera connection
-
 include_once "connection.php";
-
 
 
 class Login{
@@ -32,7 +32,7 @@ public function login(){
      //echo($this->password);
         //Hämtar rätt user från databasen
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE email='$this->email'");
-    $stmt->execute([$this->email]); 
+    $stmt->execute([$this->email]);
     $match = $stmt->fetch();
 
     if(!$match){

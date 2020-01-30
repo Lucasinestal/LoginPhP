@@ -1,6 +1,7 @@
-<?php
-
+<?php 
+session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +21,20 @@
     <div class="col-3 mx-auto">
         <div class="text-center">
             <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-    Hello USER!
-   
-    <a href="/loginPhP/index.php"> <button>Sign out</button></a>
+            <p id="profile-name" class="profile-name-card">
+                <?php 
+                    // include_once 'Classes/login.php';
+
+                    if (!isset($_SESSION['email'])) {
+                        echo 'You are not logged in!';
+                    } else {
+                        echo 'Welcome you are logged in!' . PHP_EOL;
+                        echo $_SESSION['email'];
+                    }
+
+                    // echo $_SESSION['email'];
+                ?>
+            </p>
+     <a href="/loginPhP/logout.php"><button type="submit" class="btn btn-primary">Logout</button></a>
 </body>
 </html>
