@@ -1,5 +1,5 @@
-
 <?php
+
 //session_start();
 // core configuration
 //include_once "config/core.php";
@@ -12,12 +12,12 @@
 // include classes
 include_once 'Classes/connection.php';
 include_once 'Classes/login.php';
-//include_once "libs/php/utils.php";
-$loginUser= new Login($db);
-// include page header HTML
-//include_once "layout_head.php";
-if($_POST){
+include_once 'Classes/register.php';
 
+
+$loginUser= new Login($db);
+
+if ($_POST) {
     $database = new Connection();
     $db = $database->openConnection();
 
@@ -26,42 +26,27 @@ if($_POST){
     $loginUser->login();
 }
 
-
-
-/*if(!empty($_POST['email']) && !empty($_POST['password'])) {
-    $loginUser->getUser($_POST['email'], $_POST['password']);
-}*/
-
-   ?> 
-
-
-
+session_start();
+?> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Login</title>
 </head>
-<body>
-
-<div class="container h-80">
-<div class="row align-items-center h-100">
-    <div class="col-3 mx-auto">
-        <div class="text-center">
-            <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-
-    <form action="login.php" method="POST">
-         <input type="email" name="email" placeholder="email"><br>
-         <input type="password" name="password" placeholder="password"><br>
-         <br>
-        <input type="submit" value="submit" button class="btn btn-lg btn-primary btn-block btn-signin">
-    </form>
+<body class="d-flex align-items-center">
+    <div class="container d-flex w-25 shadow rounded flex-column p-4 justify-content-center align-items-center">
+        <h2 class="p-3">Login</h2>
+        <?php echo $_SESSION["success"];?>
+        <form action='login.php' method='post' id='login'>
+            <input type='email' name='email' class='form-control' placeholder="email"/><br>
+            <input type='password' name='password' class='form-control' placeholder="Password"/><br>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <p>Already have an account? <a href="#">Register</a></p>
+        </form>
+    </div>  
 </body>
 </html>
 

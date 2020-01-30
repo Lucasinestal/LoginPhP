@@ -10,8 +10,6 @@ class Register
     public $username;
     public $password;
     public $email;
-    public $userExistsMsg ="User already exists, login failed";
-    public $successMsg;
 
     public function __construct($db)
     {
@@ -30,7 +28,7 @@ class Register
             $user = $stmt->fetch();
             if ($user)
             {
-                echo "<p>Email already in use, login failed!";
+                echo "<p class='text-danger'>Email already in use, login failed!";
             }
             else 
             {
