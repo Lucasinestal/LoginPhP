@@ -21,6 +21,9 @@ if ($_POST) {
     $database = new Connection();
     $db = $database->openConnection();
 
+    //$email = $_POST["email"];
+    //$password = $_POST["password"];
+    
     $loginUser->email=$_POST['email'];
     $loginUser->password=$_POST['password'];
     $loginUser->login();
@@ -36,9 +39,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
     <title>Login</title>
 </head>
@@ -52,8 +53,10 @@ session_start();
             <p id="profile-name" class="profile-name-card"></p>
     <?php echo $_SESSION["success"];?>
     <form action="login.php" method="POST">
-         <input type="email" name="email" placeholder="email"><br>
-         <input type="password" name="password" placeholder="password"><br>
+        <h4>Sign in</h4>
+        <?php $_SESSION["error"]?>
+         <input type="email" name="email" placeholder="email" required><br>
+         <input type="password" name="password" placeholder="password" required><br>
          <br>
         <input type="submit" value="submit" button class="btn btn-lg btn-primary btn-block btn-signin">
     </form>
