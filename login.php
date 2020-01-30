@@ -1,6 +1,5 @@
 <?php
-
-//session_start();
+session_start();
 // core configuration
 //include_once "config/core.php";
 
@@ -21,13 +20,19 @@ if ($_POST) {
     $database = new Connection();
     $db = $database->openConnection();
 
+    //$email = $_POST["email"];
+    //$password = $_POST["password"];
+    
     $loginUser->email=$_POST['email'];
     $loginUser->password=$_POST['password'];
     $loginUser->login();
 }
 
-session_start();
+//session_start();
 ?> 
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

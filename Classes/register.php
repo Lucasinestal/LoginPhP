@@ -52,10 +52,13 @@ class Register
                 }
         }
     }
-        public function successRedirect()
-        {
-            header('Location: http://test01.local/LoginPhP/login.php');
-        }
+    public function successMsg()
+    {
+        session_start();
+        header("Location: login.php");
+        $_SESSION["success"] = "<p>Account was successfully created!<p>";
+
+    }
 }
 
 $database = new Connection();
