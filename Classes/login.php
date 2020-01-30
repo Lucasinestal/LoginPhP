@@ -29,10 +29,12 @@ public function login(){
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE email='$this->email'");
     $stmt->execute([$this->email]); 
     $match = $stmt->fetch();
-            
+    
     if ($match){
         $user = json_encode($match);
-        print_r($user->password);
+        $decoded = json_decode($user);
+        var_dump($decoded->password);
+        //print_r($user->password);
         
          //echo "user match";
      }
