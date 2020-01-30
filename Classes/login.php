@@ -14,58 +14,62 @@ class Login{
 
     public function __construct($db){
         $this->conn = $db;
+      //  $this->setPassword($password);
+        //$this->setEmail($email);
 
 }       
  //Login user
+
+
 public function login(){
-   // echo("kommer in i get USER");
-   // session_start();
+     // echo ($this->password);
+     //echo ($this->email);
+    // echo"<br>";
+        // echo("kommer in i get USER");
+     // session_start();
     //$this->email = $_SESSION['email'];
-    //$this->password = $_SESSION['password'];
-
-    // echo($this->email) . PHP_EOL;
-    // echo($this->password);
-
-    //JÄMFÖRA MED DATABAS email
+     //$this->password = $_SESSION['password'];
+     //echo($this->password);
+        //Hämtar rätt user från databasen
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE email='$this->email'");
     $stmt->execute([$this->email]);
     $match = $stmt->fetch();
-    
-    //Om passwordet matchar
-    if ($match){
-        $user = json_encode($match); //blir encodat till ett json-objekt
-        $decoded = json_decode($user); //blir decodat till ett vanligt objekt
 
-        if (password_verify($this->password, $decoded->password)) {
-            $_SESSION['email'] = $this->email;
-            header("Location: profile.php");
-        } else {
-            echo "NOT THE SAMEE!";
-            // echo $decoded->password PHP_EOL;
-        }
+    if(!$match){
+        echo"Email adress not registered";
+    }
+    else{
+    $user = json_encode($match);
 
-        // var_dump($decoded->password);
-        // var_dump($decoded->email);
-        //print_r($user->password);
+    //check if this->password == hashed password
+    $decoded = json_decode($user);
+
+    $decoded->password;
+    echo "<br>";
+   // print_r($decoded->password);
+    echo "<br>";
+    //print_r($this->password);
+    echo "<br>";
+
+    if(password_verify($this->password ,$decoded->password) === true){
         
-         //echo "user match";
-     }
-     else {
-                return false;
-                echo "Ej matchat!" . PHP_EOL;
-            } 
-        }
 
-    // public function logout() {
-    //     $_SESSION['email'] = array();
-    //     session_destroy();
+        //redirect to profile   
+        echo "<br>";
+        echo "correct match of passwords";
+        echo "<br>";
+        header("Location: profile.php");
 
-    //     if (!isset($_SESSION['email'])) {
-    //         echo "You are logged out";
-    //     } else {
-    //         echo "Your are still logged in!";
-    //     }
-    // }
+    }
+    else{
+        
+        echo "wrong password";
+        
+    }
+
+    
+    } 
+}
 }
 
 $database = new Connection();

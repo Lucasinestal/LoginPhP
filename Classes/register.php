@@ -1,8 +1,9 @@
 <?php
-
 include_once 'connection.php';
 
-class Register{
+
+class Register
+{
     private $conn;
     private $table_name ="users";
 
@@ -10,12 +11,14 @@ class Register{
     public $password;
     public $email;
 
-    public function __construct(){
-        $newConnection = new Connection();
-        $this->conn = $newConnection->openConnection();
+
+    public function __construct($db)
+    {
+        $this->conn = $db;
     }
         //Register new user
-       public function register(){
+       public function register()
+       {
            //hashing password
             $hash = password_hash($this->password, PASSWORD_DEFAULT);
 
@@ -23,11 +26,13 @@ class Register{
             $this->email;
             $stmt = $this->conn->prepare("SELECT * FROM users WHERE email='$this->email'");
             $stmt->execute([$this->email]); 
-            $exists = $stmt->fetch();
-            if ($exists){
-                echo "user exists";
+            $user = $stmt->fetch();
+            if ($user)
+            {
+                echo "<p>Email already in use, login failed!";
             }
-            else {
+            else 
+            {
                 //saving to DB
                 $query = "INSERT INTO users (username, password, email) VALUES ('$this->username', '$hash', '$this->email')";
 
@@ -38,16 +43,24 @@ class Register{
                 $this->password=htmlspecialchars(strip_tags($this->password));
                 $this->email=htmlspecialchars(strip_tags($this->email));
 
-                if($stmt->execute()){
+                if($stmt->execute())
+                {
                     return true;
-                }else{
+                }else
+                {
                     $this->showError($stmt);
                     return false;
                 }
         }
     }
+    public function successMsg()
+    {
+        session_start();
+        header("Location: login.php");
+        $_SESSION["success"] = "<p>Account was successfully created!<p>";
+
+    }
 }
 
 $database = new Connection();
 $db = $database->openConnection();
-
