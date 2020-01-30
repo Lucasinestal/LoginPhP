@@ -56,7 +56,8 @@ class Register
     {
         session_start();
         header("Location: login.php");
-        $_SESSION["success"] = "<p>Account was successfully created!<p>";
+        $_SESSION["success"] = "<p class='text-success'>Account was successfully created!<p>";
+        exit();
 
     }
 }

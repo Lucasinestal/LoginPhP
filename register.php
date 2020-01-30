@@ -33,7 +33,7 @@ if($_POST){
 
 
 
-         if($user->register()){ $user->successRedirect();} } ?>
+         if($user->register()){ $user->successMsg();} } ?>
         <form action='register.php' method='post' id='register'>
             <input type='text' name='username' class='form-control' placeholder="Username" required value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username'], ENT_QUOTES) : "";  ?>" /><br>
             <input type='password' name='password' class='form-control' placeholder="Password" required value="<?php echo isset($_POST['password']) ? htmlspecialchars($_POST['password'], ENT_QUOTES) : "";  ?>" /><br>
