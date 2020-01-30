@@ -11,7 +11,6 @@
     <div class="container d-flex w-25 shadow rounded flex-column p-4 justify-content-center align-items-center">
         <h2 class="p-3">Register</h2>
 <?php
-
 // set page title
 $page_title = "Register";
 
@@ -19,11 +18,10 @@ $page_title = "Register";
 include_once 'Classes/connection.php';
 include_once 'Classes/register.php';
 
-$user = new Register($db);
-if($_POST){
-
+$user = new Classes\Register($db);
+if ($_POST) {
     // get database connection
-    $database = new Connection();
+    $database = new Classes\Connection();
     $db = $database->openConnection();
 
     $user->username=$_POST['username'];
@@ -33,7 +31,10 @@ if($_POST){
 
 
 
-         if($user->register()){ $user->successMsg();} } ?>
+    if ($user->register()) {
+        $user->successMsg();
+    }
+} ?>
         <form action='register.php' method='post' id='register'>
             <input type='text' name='username' class='form-control' placeholder="Username" required value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username'], ENT_QUOTES) : "";  ?>" /><br>
             <input type='password' name='password' class='form-control' placeholder="Password" required value="<?php echo isset($_POST['password']) ? htmlspecialchars($_POST['password'], ENT_QUOTES) : "";  ?>" /><br>

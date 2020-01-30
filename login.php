@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 // core configuration
 //include_once "config/core.php";
@@ -14,11 +16,11 @@ include_once 'Classes/login.php';
 include_once 'Classes/register.php';
 
 
-$success = new Register($db);
-$loginUser= new Login($db);
+$success = new Classes\Register($db);
+$loginUser= new Classes\Login($db);
 
 if ($_POST) {
-    $database = new Connection();
+    $database = new Classes\Connection();
     $db = $database->openConnection();
 
     //$email = $_POST["email"];

@@ -14,7 +14,8 @@ class Test extends TestCase
 
     private $user;
 
-    public function setUp():VOID{
+    public function setUp():VOID
+    {
         include "classes/register.php";
        
         
@@ -28,8 +29,8 @@ class Test extends TestCase
         $this->user->email="testemail";
         $this->assertTrue($this->user->register());
     }
-    public function tearDown():VOID{
+    public function tearDown():VOID
+    {
         $this->user->removeUser('testusername');
     }
-
 }
