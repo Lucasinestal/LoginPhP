@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 // core configuration
@@ -12,12 +11,12 @@ session_start();
 // include classes
 include_once 'Classes/connection.php';
 include_once 'Classes/login.php';
-//include_once "libs/php/utils.php";
-// include page header HTML
-//include_once "layout_head.php";
+include_once 'Classes/register.php';
+
+
 $loginUser= new Login($db);
-if($_POST){
-    
+
+if ($_POST) {
     $database = new Connection();
     $db = $database->openConnection();
 
@@ -29,13 +28,8 @@ if($_POST){
     $loginUser->login();
 }
 
-
-
-/*if(!empty($_POST['email']) && !empty($_POST['password'])) {
-    $loginUser->getUser($_POST['email'], $_POST['password']);
-}*/
-
-   ?> 
+session_start();
+?> 
 
 
 
@@ -50,8 +44,13 @@ if($_POST){
 </head>
 <body>
 
-
-
+<div class="container h-80">
+<div class="row align-items-center h-100">
+    <div class="col-3 mx-auto">
+        <div class="text-center">
+            <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+    <?php echo $_SESSION["success"];?>
     <form action="login.php" method="POST">
         <h4>Sign in</h4>
         <?php $_SESSION["error"]?>

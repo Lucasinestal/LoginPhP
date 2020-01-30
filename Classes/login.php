@@ -3,6 +3,8 @@
 
 include_once "connection.php";
 
+
+
 class Login{
     private $conn;
 
@@ -74,6 +76,3 @@ public function login(){
 
 $database = new Connection();
 $db = $database->openConnection();
-
-
-

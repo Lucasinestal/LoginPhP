@@ -21,18 +21,16 @@ if($_POST){
     // create the user
 if($user->register()){
 
-    echo "<div class='alert alert-info'>";
-        echo "Successfully registered. <a href='http://test01.local/LoginPhP/register.php'>Please login</a>.";
-    echo "</div>";
-    }else {
-    echo "<div class='alert alert-danger' role='alert'>Unable to register. Please try again.</div>";
-    }
+  $user->successMsg();
+  
+ }
+
 }
 ?>
 <form action='register.php' method='post' id='register'>
-    <input type='text' name='username' class='form-control' required value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username'], ENT_QUOTES) : "";  ?>" />
-    <input type='password' name='password' class='form-control' required value="<?php echo isset($_POST['password']) ? htmlspecialchars($_POST['password'], ENT_QUOTES) : "";  ?>" />
-    <input type='email' name='email' class='form-control' required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : "";  ?>" />
+    <input type='text' name='username' class='form-control' placeholder="Username" required value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username'], ENT_QUOTES) : "";  ?>" /><br>
+    <input type='password' name='password' class='form-control' placeholder="Password" required value="<?php echo isset($_POST['password']) ? htmlspecialchars($_POST['password'], ENT_QUOTES) : "";  ?>" /><br>
+    <input type='email' name='email' class='form-control' placeholder="Email" required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : "";  ?>" /><br>
     <button type="submit" class="btn btn-primary">Register</button>
       
 </form>
