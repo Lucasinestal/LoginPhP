@@ -45,6 +45,7 @@ public function login(){
     $decoded = json_decode($user);
 
     $decoded->password;
+    $decoded->username;
     echo "<br>";
    // print_r($decoded->password);
     echo "<br>";
@@ -53,7 +54,7 @@ public function login(){
 
     if(password_verify($this->password ,$decoded->password) === true){
         
-        $_SESSION["email"] = $this->email;
+        $_SESSION["username"] = $decoded->username;
         //redirect to profile   
         echo "<br>";
         echo "correct match of passwords";

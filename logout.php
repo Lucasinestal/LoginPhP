@@ -28,7 +28,7 @@
     $_SESSION = array();
     session_destroy();
 
-    if (!isset($_SESSION['email'])) {
+    if (!isset($_SESSION['username'])) {
         echo "You are logged out";
     } else {
         echo "Your are still logged in!";
