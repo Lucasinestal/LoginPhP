@@ -52,9 +52,7 @@ public function login(){
     echo "<br>";
 
     if(password_verify($this->password ,$decoded->password) === true){
-        session_start();
-
-        $_SESSION["email"] = $this->email;
+        
 
         //redirect to profile   
         echo "<br>";

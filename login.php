@@ -28,7 +28,7 @@ if ($_POST) {
     $loginUser->login();
 }
 
-session_start();
+//session_start();
 ?> 
 
 
@@ -50,7 +50,7 @@ session_start();
         <div class="text-center">
             <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
             <p id="profile-name" class="profile-name-card"></p>
-    <?php echo $_SESSION["success"];?>
+    
     <form action="login.php" method="POST">
         <h4>Sign in</h4>
         <?php $_SESSION["error"]?>
