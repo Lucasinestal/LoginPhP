@@ -5,19 +5,21 @@
 include_once "connection.php";
 
 
-class Login{
+class Login
+{
     private $conn;
 
     
     public $password;
     public $email;
 
-    public function __construct($db){
+    public function __construct($db)
+    {
         $this->conn = $db;
       //  $this->setPassword($password);
         //$this->setEmail($email);
 
-}       
+}
  //Login user
 
 
