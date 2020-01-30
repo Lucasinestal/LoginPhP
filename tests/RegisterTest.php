@@ -2,13 +2,8 @@
 
 namespace Test;
 
-//Comments in this file are only for educational purpose
-
-// Get namespace for TestCase
 use PHPUnit\Framework\TestCase;
 
-// Create a class, could be what ever classname you want,
-// make sure you extend the class with TestCase.
 class Test extends TestCase
 {
 
@@ -20,7 +15,7 @@ class Test extends TestCase
        
         
      
-        $this->user = new \Register($db);
+        $this->user = new \Classes\Register($db);
     }
     public function testRegister()
     {

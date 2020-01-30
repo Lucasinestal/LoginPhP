@@ -1,14 +1,6 @@
 <?php
 
-
 session_start();
-// core configuration
-//include_once "config/core.php";
-
-// set page title
-
-// include login checker
-//include_once "login_checker.php";
 
 // include classes
 include_once 'Classes/connection.php';
@@ -22,19 +14,13 @@ $loginUser= new Classes\Login($db);
 if ($_POST) {
     $database = new Classes\Connection();
     $db = $database->openConnection();
-
-    //$email = $_POST["email"];
-    //$password = $_POST["password"];
     
     $loginUser->email=$_POST['email'];
     $loginUser->password=$_POST['password'];
     $loginUser->login();
 }
 
-//session_start();
 ?> 
-
-
 
 <html lang="en">
 <head>

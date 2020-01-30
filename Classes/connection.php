@@ -6,7 +6,6 @@ use PDO;
 
 class Connection
 {
-    ///Applications/MAMP/tmp/mysql/mysql.sock
     private $server = "mysql:host=remotemysql.com;dbname=BXcacvVH4F;";
     private $user = "BXcacvVH4F";
     private $pass = "1LmlUxGW5t";

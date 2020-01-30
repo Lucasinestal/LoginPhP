@@ -11,7 +11,7 @@
     <div class="container d-flex w-25 shadow rounded flex-column p-4 justify-content-center align-items-center">
         <h2 class="p-3">Register</h2>
 <?php
-// set page title
+
 $page_title = "Register";
 
 // include Classes
@@ -27,9 +27,6 @@ if ($_POST) {
     $user->username=$_POST['username'];
     $user->password=$_POST['password'];
     $user->email=$_POST['email'];
-
-
-
 
     if ($user->register()) {
         $user->successMsg();

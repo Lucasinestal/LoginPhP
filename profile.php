@@ -28,7 +28,7 @@ session_start();
                     if (!isset($_SESSION['username'])) {
                         echo 'You are not logged in!';
                     } else {
-                        echo '<p>Welcome ' . $_SESSION['username'] . ' you are logged in!</p>';
+                        echo '<p class="text-light">Welcome ' . $_SESSION['username'] . ' you are logged in!</p>';
                         // echo $_SESSION['username'];
                     }
 
