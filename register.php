@@ -30,7 +30,7 @@ if($_POST){
 if($user->register()){
 
     echo "<div class='alert alert-info'>";
-        echo "Successfully registered. <a href='http://test01.local/LoginPhP/register.php'>Please login</a>.";
+        echo "Successfully registered. <a href='/LoginPhP/register.php'>Please login</a>.";
     echo "</div>";
     }else{
     echo "<div class='alert alert-danger' role='alert'>Unable to register. Please try again.</div>";
