@@ -1,7 +1,9 @@
 <?php
-//inkludera connection
+session_start();
 
+//inkludera connection
 include_once "connection.php";
+
 
 class Login{
     private $conn;
@@ -35,10 +37,8 @@ public function login(){
         $decoded = json_decode($user); //blir decodat till ett vanligt objekt
 
         if (password_verify($this->password, $decoded->password)) {
-            session_start();
             $_SESSION['email'] = $this->email;
-            echo $_SESSION['email'] . "EMAILEN";
-            echo "OOOH YESSS!";
+            header("Location: profile.php");
         } else {
             echo "NOT THE SAMEE!";
             // echo $decoded->password PHP_EOL;
@@ -55,6 +55,17 @@ public function login(){
                 echo "Ej matchat!" . PHP_EOL;
             } 
         }
+
+    // public function logout() {
+    //     $_SESSION['email'] = array();
+    //     session_destroy();
+
+    //     if (!isset($_SESSION['email'])) {
+    //         echo "You are logged out";
+    //     } else {
+    //         echo "Your are still logged in!";
+    //     }
+    // }
 }
 
 $database = new Connection();

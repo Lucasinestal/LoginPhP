@@ -35,6 +35,6 @@ session_start();
                     // echo $_SESSION['email'];
                 ?>
             </p>
-     <a href="/loginPhP/index.php"><button type="submit" class="btn btn-primary">Logout</button></a>
+     <a href="/loginPhP/logout.php"><button type="submit" class="btn btn-primary">Logout</button></a>
 </body>
 </html>
