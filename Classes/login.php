@@ -22,21 +22,12 @@ class Login{
 
 
 public function login(){
-     // echo ($this->password);
-     //echo ($this->email);
-    // echo"<br>";
-        // echo("kommer in i get USER");
-     // session_start();
-    //$this->email = $_SESSION['email'];
-     //$this->password = $_SESSION['password'];
-     //echo($this->password);
-        //Hämtar rätt user från databasen
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE email='$this->email'");
     $stmt->execute([$this->email]);
     $match = $stmt->fetch();
 
     if(!$match){
-        echo"Email adress not registered";
+        echo "Email adress not registered";
     }
     else{
     $user = json_encode($match);
@@ -51,9 +42,9 @@ public function login(){
     //print_r($this->password);
     echo "<br>";
 
-    if(password_verify($this->password ,$decoded->password) === true){
+    if(password_verify($this->password, $decoded->password) === true){
         
-        $_SESSION["email"] = $this->email;
+        $_SESSION["username"] = $decoded->username;
         //redirect to profile   
         echo "<br>";
         echo "correct match of passwords";

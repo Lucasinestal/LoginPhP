@@ -25,11 +25,11 @@ session_start();
                 <?php 
                     // include_once 'Classes/login.php';
 
-                    if (!isset($_SESSION['email'])) {
+                    if (!isset($_SESSION['username'])) {
                         echo 'You are not logged in!';
                     } else {
-                        echo 'Welcome you are logged in!' . PHP_EOL;
-                        echo $_SESSION['email'];
+                        echo '<p>Welcome ' . $_SESSION['username'] . ' you are logged in!</p>';
+                        // echo $_SESSION['username'];
                     }
 
                     // echo $_SESSION['email'];

@@ -17,7 +17,7 @@ include_once 'Classes/register.php';
 $success = new Register($db);
 $loginUser= new Login($db);
 
-if ($_POST) {
+if ($_POST) { //om användaren klickar på post i formulret
     $database = new Connection();
     $db = $database->openConnection();
 
