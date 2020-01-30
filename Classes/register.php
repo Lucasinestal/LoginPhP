@@ -60,6 +60,13 @@ class Register
         exit();
 
     }
+    public function removeUser($user)
+    {
+        $query = "DELETE FROM users WHERE username = :user";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(":user", $user, PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }
 
 $database = new Connection();
