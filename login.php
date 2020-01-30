@@ -14,6 +14,7 @@ include_once 'Classes/login.php';
 include_once 'Classes/register.php';
 
 
+$success = new Register($db);
 $loginUser= new Login($db);
 
 if ($_POST) {
@@ -44,10 +45,9 @@ if ($_POST) {
 <body class="d-flex align-items-center">
     <div class="container d-flex w-25 shadow rounded flex-column p-4 justify-content-center align-items-center">
         <h2 class="p-3">Login</h2>
-        <?php echo $_SESSION["success"];?>
         <form action='login.php' method='post' id='login'>
-            <input type='email' name='email' class='form-control' placeholder="email"/><br>
-            <input type='password' name='password' class='form-control' placeholder="Password"/><br>
+            <input type='email' name='email' class='form-control' placeholder="email" required/><br>
+            <input type='password' name='password' class='form-control' placeholder="Password" required/><br>
             <button type="submit" class="btn btn-primary">Login</button>
             <p>Already have an account? <a href="#">Register</a></p>
         </form>

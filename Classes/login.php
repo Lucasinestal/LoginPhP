@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
 //inkludera connection
 include_once "connection.php";
@@ -53,7 +53,7 @@ public function login(){
 
     if(password_verify($this->password ,$decoded->password) === true){
         
-
+        $_SESSION["email"] = $this->email;
         //redirect to profile   
         echo "<br>";
         echo "correct match of passwords";
