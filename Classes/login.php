@@ -21,26 +21,38 @@ public function login(){
     //$this->email = $_SESSION['email'];
     //$this->password = $_SESSION['password'];
 
-    echo($this->email) . PHP_EOL;
-    echo($this->password);
 
-    //JÄMFÖRA MED DATABAS
+    //echo($this->password);
 
+    //Hämtar rätt user från databasen
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE email='$this->email'");
     $stmt->execute([$this->email]); 
     $match = $stmt->fetch();
+    $user = json_encode($match);
+
     
-    if ($match){
-        $user = json_encode($match);
-        $decoded = json_decode($user);
-        var_dump($decoded->password);
-        //print_r($user->password);
-        
-         //echo "user match";
-     }
-     else{
-                return false;
-            } 
+    //check if this->password == hashed password
+    $decoded = json_decode($user);
+
+    $decoded->password;
+    echo "<br>";
+    print_r($decoded->password);
+    echo "<br>";
+    print_r($this->password);
+    echo "<br>";
+
+    if(password_verify($this->password ,$decoded->password) === true){
+        //redirect to profile   
+        echo "<br>";
+        echo "correct match of passwords";
+        echo "<br>";
+
+    }
+    else{
+        echo "wrong password";
+    }
+
+    
         }
 }
 
