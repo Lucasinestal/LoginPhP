@@ -17,7 +17,7 @@
             <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
             <p id="profile-name" class="profile-name-card"></p>
             
-        <p><a button class="btn btn-lg btn-primary btn-block btn-signin"href="http://localhost/loginPhP/login.php">Login!</a> <a button class="btn btn-lg btn-primary btn-block btn-signin"href="http://localhost/loginPhP/register.php">Register!</a></p>
+        <p><a button class="btn btn-lg btn-primary btn-block btn-signin"href="login.php">Login!</a> <a button class="btn btn-lg btn-primary btn-block btn-signin" href="register.php">Register!</a></p>
         </div>
     </div>
 </div>
