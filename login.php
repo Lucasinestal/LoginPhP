@@ -1,6 +1,5 @@
 <?php
-
-//session_start();
+session_start();
 // core configuration
 //include_once "config/core.php";
 
@@ -29,7 +28,7 @@ if ($_POST) {
     $loginUser->login();
 }
 
-session_start();
+//session_start();
 ?> 
 
 
