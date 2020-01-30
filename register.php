@@ -21,7 +21,7 @@ if($_POST){
     // create the user
 if($user->register()){
 
-  $user->successRedirect();
+  $user->successMsg();
   
  }
 
