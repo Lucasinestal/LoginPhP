@@ -15,7 +15,7 @@ include_once 'Classes/register.php';
 
 // include page header HTML
 //include_once "layout_head.php";
-
+$user = new Register($db);
 if($_POST){
 
     // get database connection
