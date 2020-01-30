@@ -53,7 +53,6 @@ if ($_POST) {
     <?php echo $_SESSION["success"];?>
     <form action="login.php" method="POST">
         <h4>Sign in</h4>
-        <?php $_SESSION["error"]?>
          <input type="email" name="email" placeholder="email" required><br>
          <input type="password" name="password" placeholder="password" required><br>
          <br>
