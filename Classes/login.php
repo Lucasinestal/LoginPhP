@@ -32,6 +32,11 @@ public function login(){
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE email='$this->email'");
     $stmt->execute([$this->email]); 
     $match = $stmt->fetch();
+
+    if(!$match){
+        echo"Email adress not registered";
+    }
+    else{
     $user = json_encode($match);
 
     //check if this->password == hashed password
@@ -57,12 +62,14 @@ public function login(){
 
     }
     else{
+        
         echo "wrong password";
-        header("Location: login.php");
+        
     }
 
     
-        }
+    } 
+}
 }
 
 $database = new Connection();

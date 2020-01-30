@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +22,7 @@ session_start();
             <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
             <p id="profile-name" class="profile-name-card"></p>
     Hello USER!
-    <?php
-   echo $_SESSION["email"];
-    ?>
+   
     <a href="/loginPhP/index.php"> <button>Sign out</button></a>
 </body>
 </html>
